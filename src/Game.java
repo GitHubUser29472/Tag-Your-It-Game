@@ -1,4 +1,4 @@
 
-public class Game {
+public class game {
 
 }
