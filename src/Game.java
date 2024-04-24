@@ -209,6 +209,9 @@ import java.text.DecimalFormat;
 		            	g2d.setColor(Color.blue);
 		    			g2d.fillRect(p.getX(), p.getY(), p.getWidth(), p.getHeight());
 		    			g2d.setColor(Color.red);
+		    			
+		    			
+		    			
 		    			g2d.fillRect(p2.getX(), p2.getY(), p2.getWidth(), p2.getHeight());
 		    			g2d.setColor(Color.black);
 		    			g2d.drawString(new DecimalFormat("#0.00").format(curtime),20,30);
