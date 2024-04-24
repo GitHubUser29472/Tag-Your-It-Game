@@ -49,8 +49,8 @@ import java.text.DecimalFormat;
 			this.addKeyListener(this);
 			key=-1;
 		
-			p= new Players(30, 100, 40, 150, Color.black);
-			p2=new Players(720, 100, 40, 150, Color.black);
+			p= new Players(30, 100, 50, 50, Color.blue);
+			p2=new Players(1250, 100, 50, 50, Color.red);
 			bi=new Background_Image();
 			music=new Player();
 			playSound=true;
@@ -196,19 +196,21 @@ import java.text.DecimalFormat;
 
 		            case 'G':
 		            	
-		            	k=-2;
-						f=2;
-						c=-2;
-						r=2;
-						y=-2;
-						u=2;
-						m=-2;
-						v=2;
+		            	k=-3;
+						f=3;
+						c=-3;
+						r=3;
+						y=-3;
+						u=3;
+						m=-3;
+						v=3;
 		            	
 		            	
-		            	g2d.setColor(Color.black);
+		            	g2d.setColor(Color.blue);
 		    			g2d.fillRect(p.getX(), p.getY(), p.getWidth(), p.getHeight());
+		    			g2d.setColor(Color.red);
 		    			g2d.fillRect(p2.getX(), p2.getY(), p2.getWidth(), p2.getHeight());
+		    			g2d.setColor(Color.black);
 		    			g2d.drawString(new DecimalFormat("#0.00").format(curtime),20,30);
 		    			g2d.setColor(Color.green);
 		    			g2d.drawString(t, 300, 300);
@@ -291,8 +293,8 @@ import java.text.DecimalFormat;
 		 public void drawStartScreen(Graphics g2d) {
 		    	g2d.setFont( new Font("Broadway", Font.BOLD, 20));
 				g2d.setColor(Color.black);
-				g2d.drawString("Welcome to Tag your it!", 300, 200);
-				g2d.drawString("press space to start", 300, 300);
+				g2d.drawString("Welcome to Tag your it!", 550, 200);
+				g2d.drawString("press space to start", 550, 300);
 		
 		    }
 		

@@ -79,14 +79,14 @@ public void move(){
 		
 		 y+=dy;
 		 x+=dx;
-		 if(x+width>800)
-			 x=800-width;
+		 if(x+width>1350)
+			 x=1350-width;
 		 if(x<0)
 			 x=0;
 		 if(y<0)
 			 y=0;
-		 if(y>425)
-			 y=425;
+		 if(y>620)
+			 y=620;
 		 
 	
 
