@@ -6,7 +6,7 @@
 
 	public class Main extends JFrame{
 		private static final int WIDTH =1350;
-		private static final int HEIGHT=700;
+		private static final int HEIGHT=600;
 		
 		public Main () {
 			super("Tag!");
