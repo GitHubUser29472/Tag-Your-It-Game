@@ -178,7 +178,7 @@ import java.text.DecimalFormat;
 
 	
 	
-	//move();
+	move();
 			
 			
 			
@@ -196,6 +196,14 @@ import java.text.DecimalFormat;
 
 		            case 'G':
 		            	
+		            	k=-2;
+						f=2;
+						c=-2;
+						r=2;
+						y=-2;
+						u=2;
+						m=-2;
+						v=2;
 		            	
 		            	
 		            	g2d.setColor(Color.black);
@@ -204,14 +212,7 @@ import java.text.DecimalFormat;
 		    			g2d.drawString(new DecimalFormat("#0.00").format(curtime),20,30);
 		    			g2d.setColor(Color.green);
 		    			g2d.drawString(t, 300, 300);
-		    			k=-2;
-						f=2;
-						c=-2;
-						r=2;
-						y=-2;
-						u=2;
-						m=-2;
-						v=2;
+		    		
 		                //game screen
 		            	/*
 		                g2d.drawImage(background.getImage(), 0, 0, getWidth(), getHeight(), this);
@@ -236,7 +237,7 @@ import java.text.DecimalFormat;
 		                break;
 
 */
-
+						   break;
 
 		            case 'W':
 		            	
@@ -252,7 +253,7 @@ import java.text.DecimalFormat;
 		                break;
 
 */
-
+		            	   break;
 
 		            case 'L':
 		            	
@@ -372,8 +373,10 @@ import java.text.DecimalFormat;
 			
 			if (key==32) {
 				t="";
+				 System.out.println("Space key released. Current screen: " + screen);
 			screen='G';
-				
+			System.out.println("Screen changed to: " + screen);
+
 			}
 			
 			
