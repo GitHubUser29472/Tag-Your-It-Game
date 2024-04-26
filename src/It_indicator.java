@@ -12,7 +12,7 @@ public class It_indicator {
 	private int dy;
 	private int dx;
 	private Color c;
-		private int score;
+	private boolean ItOrNah;
 
 
 	public It_indicator() {
@@ -21,7 +21,7 @@ public class It_indicator {
 		width=25;
 		height=40;
 		c=Color.cyan;
-		score=0;
+ItOrNah=false;
 	}
 
 	public It_indicator(int x1, int y1, int w, int h, Color c1) {
@@ -32,7 +32,7 @@ public class It_indicator {
 		c=c1;
 		dy=0;
 		dx=0;
-		score=0;
+
 	}
 
 	
@@ -47,16 +47,9 @@ public class It_indicator {
 	public int getX(){
 		 return x;
 	}
+	
 	public int getY(){
 		 return y;
-	}
-
-	public int getScore(){
-		 return score;
-	}
-
-	public void setScore(int scorefromgame) {
-		score +=scorefromgame;
 	}
 
 	public int getWidth() {
@@ -73,29 +66,20 @@ public class It_indicator {
 		
 		return c;
 	}
+	
 	public void setdy(int c) {
 		 dy=c;
 	}
+	
 	public void setdx(int d) {
 		 dx=d;
 	}
 
 
 
-	public void move(){
+	public void follow(){
 
-			
-			 y+=dy;
-			 x+=dx;
-			 if(x+width>800)
-				 x=800-width;
-			 if(x<0)
-				 x=0;
-			 if(y<0)
-				 y=0;
-			 if(y>425)
-				 y=425;
-			 
+				 
 		
 
 	}
