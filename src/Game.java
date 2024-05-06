@@ -147,7 +147,7 @@ import java.text.DecimalFormat;
 			
 			
 			
-			
+			 curtime = (System.currentTimeMillis() - time) / 1000;
 			
 			
 			
@@ -214,10 +214,11 @@ import java.text.DecimalFormat;
 		    			
 		    			g2d.fillRect(p2.getX(), p2.getY(), p2.getWidth(), p2.getHeight());
 		    			g2d.setColor(Color.black);
-		    			g2d.drawString(new DecimalFormat("#0.00").format(curtime),20,30);
+		    			
 		    			g2d.setColor(Color.green);
 		    			g2d.drawString(t, 300, 300);
 		    		
+		    			g2d.drawString(new DecimalFormat("#0.00").format(curtime),20,30);
 		                //game screen
 		            	/*
 		                g2d.drawImage(background.getImage(), 0, 0, getWidth(), getHeight(), this);
@@ -292,7 +293,11 @@ import java.text.DecimalFormat;
 		
 			
 		  }
-		
+		 
+		 
+		 
+		 
+		 
 		 public void drawStartScreen(Graphics g2d) {
 		    	g2d.setFont( new Font("Broadway", Font.BOLD, 20));
 				g2d.setColor(Color.black);
@@ -302,7 +307,8 @@ import java.text.DecimalFormat;
 		    }
 		
 		public void keyTyped(KeyEvent e) {
-		
+			
+			
 		}public void keyPressed(KeyEvent e) {
 			key=e.getKeyCode();
 			System.out.println(key);
@@ -323,7 +329,6 @@ import java.text.DecimalFormat;
 			}
 			if (key==83) {
 				p.setdy(r);
-				
 			}
 			if (key==39) {
 				p2.setdx(v);
@@ -350,9 +355,9 @@ import java.text.DecimalFormat;
 			if (key==87) {
 				p.setdy(0);
 			}
-		if (key==83) {
+		   if (key==83) {
 			p.setdy(0);
-		}
+		    }
 			if (key==38) {
 			p2.setdy(0);
 			
