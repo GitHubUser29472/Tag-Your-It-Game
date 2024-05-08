@@ -91,6 +91,29 @@ public void move(){
 	
 
 }
+public boolean collision(Players p) {
+	if(this.getX()+getWidth()>=p.getX()&&
+			getX()<=p.getX()+p.getWidth()&&
+			getY()+getHeight()>=p.getY()&&
+			getY()<=p.getY()+p.getHeight())
+			{
+				
+				return true;
+			}
+	
+	
+	return false;
+}
+public boolean collision2(Players p2) {
+	if(this.getX()+getWidth()>=p2.getX()&&
+			getX()<=p2.getX()+p2.getWidth()&&
+			getY()+getHeight()>=p2.getY()&&
+			getY()<=p2.getY()+p2.getHeight())
+			{
+				
+				return true;
+			}
+	return false;
 
-
+}
 }
