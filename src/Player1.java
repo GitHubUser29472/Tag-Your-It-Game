@@ -14,7 +14,7 @@ private int dx;
 	
 	
 	public Player1(int xV, int yV, int w, int h) {
-		super(xV, yV, new ImageIcon("redcharacter.png"), w, h);
+		super(xV, yV, new ImageIcon("redcharacter-removebg-preview.png"), w, h);
 		dy=0;
 		dx=0;
 	}
@@ -43,6 +43,10 @@ private int dx;
 		setX(getX() + dx);
 		
 		setY(getY() + dy);
+		/*
+		if(x+width>800)
+			x=800-width;
+			*/
 	}
 	
 	
