@@ -12,8 +12,8 @@ import java.text.DecimalFormat;
 		//private Pictures pr;
 		private int key;
 	
-		private Players p;
-		private Players p2;
+		private Player1 player1;
+		private Player2 player2;
 		private String t;
 		 private ImageIcon background;
 		private Background_Image bi;
@@ -27,7 +27,7 @@ import java.text.DecimalFormat;
         private int f;
         private int c;
         private int r;
-        
+       
 		private int y;
         private int u;
         private int m;
@@ -48,9 +48,13 @@ import java.text.DecimalFormat;
 			new Thread(this).start();
 			this.addKeyListener(this);
 			key=-1;
-		
-			p= new Players(30, 100, 50, 50, Color.blue);
-			p2=new Players(1250, 100, 50, 50, Color.red);
+			 background = new ImageIcon("spacebackground2.jpg");
+			 player1 = new Player1(30, 100, 50, 100);
+			 player2 = new Player2(1250, 100, 50, 100);
+			/*
+			 p= new Players(30, 100, 50, 50, player1, Color.blue);
+			p2=new Players(1250, 100, 50, 50, player2, Color.red);
+			*/
 			bi=new Background_Image();
 			music=new Player();
 			playSound=true;
@@ -207,12 +211,12 @@ import java.text.DecimalFormat;
 		            	
 		            	
 		            	g2d.setColor(Color.blue);
-		    			g2d.fillRect(p.getX(), p.getY(), p.getWidth(), p.getHeight());
+		    			//g2d.fillRect(p.getX(), p.getY(), p.getWidth(), p.getHeight());
 		    			g2d.setColor(Color.red);
 		    			
+		    		
 		    			
-		    			
-		    			g2d.fillRect(p2.getX(), p2.getY(), p2.getWidth(), p2.getHeight());
+		    			//g2d.fillRect(p2.getX(), p2.getY(), p2.getWidth(), p2.getHeight());
 		    			g2d.setColor(Color.black);
 		    			
 		    			g2d.setColor(Color.green);
@@ -243,6 +247,7 @@ import java.text.DecimalFormat;
 		                break;
 
 */
+		    			drawPlayers(g2d);
 						   break;
 
 		            case 'W':
@@ -295,7 +300,10 @@ import java.text.DecimalFormat;
 		  }
 		 
 		 
-		 
+		  public void drawPlayers(Graphics g2d) {
+		        g2d.drawImage(player1.getPic().getImage(), player1.getX(), player1.getY(), player1.getWidth(), player1.getHeight(), this);
+		        g2d.drawImage(player2.getPic().getImage(), player2.getX(), player2.getY(), player2.getWidth(), player2.getHeight(), this);
+		    }
 		 
 		 
 		 public void drawStartScreen(Graphics g2d) {
@@ -313,28 +321,28 @@ import java.text.DecimalFormat;
 			key=e.getKeyCode();
 			System.out.println(key);
 			if (key==38) {
-				p2.setdy(k);
+				player2.setdy(k);
 			}
 			if (key==68) {
-				p.setdx(u);
+				player1.setdx(u);
 			}
 			if (key==65) {
-				p.setdx(y);
+				player1.setdx(y);
 			}
 			if (key==40) {
-				p2.setdy(f);
+				player2.setdy(f);
 			}
 			if (key==87) {
-				p.setdy(c);
+				player1.setdy(c);
 			}
 			if (key==83) {
-				p.setdy(r);
+				player1.setdy(r);
 			}
 			if (key==39) {
-				p2.setdx(v);
+				player2.setdx(v);
 				}
 			if (key==37) {
-				p2.setdx(m);
+				player2.setdx(m);
 				
 				}
 			if (key==49) {
@@ -353,32 +361,32 @@ import java.text.DecimalFormat;
 		public void keyReleased(KeyEvent e){
 			key=e.getKeyCode();
 			if (key==87) {
-				p.setdy(0);
+				player1.setdy(0);
 			}
 		   if (key==83) {
-			p.setdy(0);
+			player1.setdy(0);
 		    }
 			if (key==38) {
-			p2.setdy(0);
+			player2.setdy(0);
 			
 			}
 			if (key==39) {
-				p2.setdx(0);
+				player2.setdx(0);
 				}
 			if (key==37) {
-				p2.setdx(0);
+				player2.setdx(0);
 				
 				}
 			
 			if (key==40) {
-				p2.setdy(0);
+				player2.setdy(0);
 				
 				}
 			if (key==68) {
-				p.setdx(0);
+				player1.setdx(0);
 			}
 			if (key==65) {
-				p.setdx(0);
+				player1.setdx(0);
 			}
 			
 			if (key==32) {
@@ -397,8 +405,8 @@ import java.text.DecimalFormat;
 		
 		public void move() {
 		
-			p.move();
-			p2.move();
+			player1.move();
+			player2.move();
 		}
 		
 	
