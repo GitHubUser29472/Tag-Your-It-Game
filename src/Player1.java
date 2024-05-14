@@ -14,7 +14,7 @@ private int dx;
 	
 	
 	public Player1(int xV, int yV, int w, int h) {
-		super(xV, yV, new ImageIcon("redcharacter-removebg-preview.png"), w, h);
+		super(xV, yV, new ImageIcon("newredcharacter.png"), w, h);
 		dy=0;
 		dx=0;
 	}
