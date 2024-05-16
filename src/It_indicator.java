@@ -1,87 +1,57 @@
-import java.awt.Color;
+import javax.swing.*;
 
-import javax.swing.ImageIcon;
-
-public class It_indicator {
+public class It_indicator extends Players{
+private int dy;
+private int dx;
+	
+		
 	
 	
-	private int x;
-	private int y;
-	private int width;
-	private int height;
-	private int dy;
-	private int dx;
-	private Color c;
-	private boolean ItOrNah;
-
-
-	public It_indicator() {
-		x=700;
-		y=300;
-		width=25;
-		height=40;
-		c=Color.cyan;
-ItOrNah=false;
+	public It_indicator() 
+	{
+		super();
 	}
-
-	public It_indicator(int x1, int y1, int w, int h, Color c1) {
-		x=x1;
-		y=y1;
-		width=w;
-		height=h;
-		c=c1;
+	
+	
+	public It_indicator(int xV, int yV, int w, int h) {
+		super(xV, yV, new ImageIcon("bluecharacter-removebg-preview.png"), w, h);
 		dy=0;
 		dx=0;
-
+	}
+	
+	
+	
+	public void setX(int x1) {
+		super.setX(x1-super.getX());
+	}
+	
+	public void setY(int y1) {
+	    super.setY(y1 - super.getY());
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public int getX(){
-		 return x;
-	}
-	
-	public int getY(){
-		 return y;
-	}
-
-	public int getWidth() {
-		
-		return width;
-	}
-
-	public int getHeight() {
-		
-		return height;
-	}
-
-	public Color getColor() {
-		
-		return c;
-	}
 	
 	public void setdy(int c) {
 		 dy=c;
 	}
-	
-	public void setdx(int d) {
-		 dx=d;
+	public void setdx(int r) {
+		 dx=r;
 	}
 
 
-
-	public void follow(){
-
-				 
+	public void move() {
+		// TODO Auto-generated method stub
+		setX(getX() + dx);
 		
-
+		setY(getY() + dy);
 	}
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

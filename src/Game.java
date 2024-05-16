@@ -14,8 +14,9 @@ import java.text.DecimalFormat;
 	
 		private Player1 player1;
 		private Player2 player2;
+		private It_indicator YourIt;
 		private String t;
-		 private ImageIcon background;
+		 private Pictures background;
 		private Background_Image bi;
 		private Player music;
 		private int determinant;
@@ -27,7 +28,7 @@ import java.text.DecimalFormat;
         private int f;
         private int c;
         private int r;
-       
+       private Pictures startScreenImage;
 		private int y;
         private int u;
         private int m;
@@ -40,17 +41,21 @@ import java.text.DecimalFormat;
         private boolean gameStart;
         private boolean addScore;
         private boolean addScore2;
-        
-        
+        private int witx;
+        private int wity;
+        private boolean whosit;
 		
 		public Game() {
 			back=null;
 			new Thread(this).start();
 			this.addKeyListener(this);
 			key=-1;
-			 background = new ImageIcon("spacebackground2.jpg");
+			// background = Pictures("spacebackground2.jpg");
+			startScreenImage = new Pictures("HauntedHouseImage.jpg", 0, 0, 800, 600);
 			 player1 = new Player1(30, 100, 50, 100);
 			 player2 = new Player2(1250, 100, 50, 100);
+			 YourIt = new It_indicator(50, 70, witx, wity);
+			 
 			/*
 			 p= new Players(30, 100, 50, 50, player1, Color.blue);
 			p2=new Players(1250, 100, 50, 50, player2, Color.red);
@@ -70,8 +75,16 @@ import java.text.DecimalFormat;
 		 addScore=false;
 		 addScore2=false;
 		 screen='S';
+		 whosit=true;
+		 if(whosit) {
+				witx=player1.getX();
+				wity=player1.getY();
+			}else {
+				witx=player2.getX();
+				wity=player2.getY();
+			}
 			//bi= new Pictures("HoustonLamarHighSchool.jpg",0,0,800,600);
-			//p=new Pictures("vader.png", 200, 300, 300, 200, 0,0, true, true);
+	//p=new Pictures("vader.png", 200, 300, 300, 200, 0,0, true, true);
 		}
 		
 		public void run() {
@@ -246,7 +259,18 @@ import java.text.DecimalFormat;
 		                g2d.drawString("Lives: " + lives, 100, 100);
 		                break;
 
-*/
+*/if (player1.collision(player2)) {
+	
+	
+	
+	if(whosit) {
+		whosit=false;
+	}
+	
+    System.out.println("Collision detected!");
+    
+}
+
 		    			drawPlayers(g2d);
 						   break;
 
@@ -303,15 +327,18 @@ import java.text.DecimalFormat;
 		  public void drawPlayers(Graphics g2d) {
 		        g2d.drawImage(player1.getPic().getImage(), player1.getX(), player1.getY(), player1.getWidth(), player1.getHeight(), this);
 		        g2d.drawImage(player2.getPic().getImage(), player2.getX(), player2.getY(), player2.getWidth(), player2.getHeight(), this);
+		        g2d.drawImage(YourIt.getPic().getImage(), witx, wity+90, YourIt.getWidth(), YourIt.getHeight(), this);
 		    }
 		 
 		 
 		 public void drawStartScreen(Graphics g2d) {
+			 
 		    	g2d.setFont( new Font("Broadway", Font.BOLD, 20));
 				g2d.setColor(Color.black);
 				g2d.drawString("Welcome to Tag your it!", 550, 200);
 				g2d.drawString("press space to start", 550, 300);
-		
+				
+		        g2d.drawImage(new ImageIcon(startScreenImage.getPic()).getImage(), startScreenImage.getX(), startScreenImage.getY(), startScreenImage.getWidth(), startScreenImage.getHeight(), this);
 		    }
 		
 		public void keyTyped(KeyEvent e) {
@@ -396,7 +423,7 @@ import java.text.DecimalFormat;
 			System.out.println("Screen changed to: " + screen);
 
 			}
-			
+			 
 			
 
 		}
