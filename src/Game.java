@@ -12,6 +12,9 @@ import java.text.DecimalFormat;
 		//private Pictures pr;
 		private int key;
 	
+		private long lastTagTime;
+		private final long cooldownPeriod = 1000; // 1 second cooldown in milliseconds
+
 		private Player1 player1;
 		private Player2 player2;
 		private It_indicator YourIt;
@@ -44,6 +47,11 @@ import java.text.DecimalFormat;
         private int witx;
         private int wity;
         private boolean whosit;
+		private String whositString;
+		private String whosnotitText;
+		
+		
+		
 		
 		public Game() {
 			back=null;
@@ -51,7 +59,7 @@ import java.text.DecimalFormat;
 			this.addKeyListener(this);
 			key=-1;
 			// background = Pictures("spacebackground2.jpg");
-			startScreenImage = new Pictures("HauntedHouseImage.jpg", 0, 0, 800, 600);
+			startScreenImage = new Pictures("HauntedHouseImage.png", 0, 0, 800, 600);
 			 player1 = new Player1(30, 100, 50, 100);
 			 player2 = new Player2(1250, 100, 50, 100);
 			 YourIt = new It_indicator(50, 70, witx, wity);
@@ -76,13 +84,19 @@ import java.text.DecimalFormat;
 		 addScore2=false;
 		 screen='S';
 		 whosit=true;
-		 if(whosit) {
-				witx=player1.getX();
-				wity=player1.getY();
-			}else {
-				witx=player2.getX();
-				wity=player2.getY();
-			}
+		 
+		 if (curtime >= 120) {
+             screen = 'W';
+         }
+		 
+		  if (whosit){
+		 whosnotitText="Player Two";
+		  } else
+		  whosnotitText="Player One";
+		
+		  
+		  whositString="Player One";
+		 
 			//bi= new Pictures("HoustonLamarHighSchool.jpg",0,0,800,600);
 	//p=new Pictures("vader.png", 200, 300, 300, 200, 0,0, true, true);
 		}
@@ -123,7 +137,10 @@ import java.text.DecimalFormat;
 
 			
 			
-	
+			 if (whosit){
+				 whosnotitText="Player Two";
+				  } else
+				  whosnotitText="Player One";
 			
 			
 			
@@ -224,57 +241,61 @@ import java.text.DecimalFormat;
 		            	
 		            	
 		            	g2d.setColor(Color.blue);
-		    			//g2d.fillRect(p.getX(), p.getY(), p.getWidth(), p.getHeight());
+		    	
 		    			g2d.setColor(Color.red);
 		    			
-		    		
+		    	        
 		    			
-		    			//g2d.fillRect(p2.getX(), p2.getY(), p2.getWidth(), p2.getHeight());
-		    			g2d.setColor(Color.black);
+		    			
 		    			
 		    			g2d.setColor(Color.green);
 		    			g2d.drawString(t, 300, 300);
-		    		
 		    			g2d.drawString(new DecimalFormat("#0.00").format(curtime),20,30);
-		                //game screen
-		            	/*
-		                g2d.drawImage(background.getImage(), 0, 0, getWidth(), getHeight(), this);
-		                g2d.setFont( new Font("Broadway", Font.BOLD, 20));
-		                g2d.drawString("Lives: "+ lives, 1000, 80);
-		                drawAliens(g2d);
-		                moveAliens();
-		                drawPlayerShip(g2d);
-		                drawSM(g2d);
-		                drawAlienMissile(g2d);
-		                alienHit();
-		                playerHit();
-		                checkLose1();
-		                checkWin();
-		                
-		                count++;
-		                if (count % 100 == 0) {
-		                    getAlienMissile(g2d);
+		    			
+		    			g2d.setFont( new Font("Broadway", Font.BOLD, 20));
+						g2d.setColor(Color.black);
+		    			g2d.drawString(whositString,550,50);
+		    		
+		               
+		    					
+		    			if (player1.collision(player2)) {
+		                    long currentTime = System.currentTimeMillis();
+		                    if (currentTime - lastTagTime >= cooldownPeriod) {
+		                        if (whosit) {
+		                            whosit = false;
+		                            whositString = "Player Two is it!";
+		                        } else {
+		                            whosit = true;
+		                            whositString = "Player One is it!";
+		                        }
+		                        lastTagTime = currentTime; // Update the last tag time
+		                        System.out.println("Collision detected!");
+		                    }
 		                }
-		                g2d.setColor(Color.black);
-		                g2d.drawString("Lives: " + lives, 100, 100);
-		                break;
 
-*/if (player1.collision(player2)) {
-	
-	
-	
-	if(whosit) {
-		whosit=false;
-	}
-	
-    System.out.println("Collision detected!");
-    
-}
-
+		    			
+		    			
+		    			 if(whosit) {
+		    				 whositString="Player One is it!";
+		    				 whosnotitText="";
+		    					witx=player1.getX();
+		    					wity=player1.getY();
+		    				}else {
+		    				
+		    					witx=player2.getX();
+		    					wity=player2.getY();
+		    				}			
+		    			
+		    			
+		    			
 		    			drawPlayers(g2d);
+		    			checkWin();
 						   break;
 
 		            case 'W':
+		            	g2d.setFont( new Font("Broadway", Font.BOLD, 20));
+						g2d.setColor(Color.black);
+		            	g2d.drawString(whosnotitText + " Wins!", 550, 250);
 		            	
 		            	/*
 		                g2d.setColor(Color.green);
@@ -340,6 +361,14 @@ import java.text.DecimalFormat;
 				
 		        g2d.drawImage(new ImageIcon(startScreenImage.getPic()).getImage(), startScreenImage.getX(), startScreenImage.getY(), startScreenImage.getWidth(), startScreenImage.getHeight(), this);
 		    }
+		 
+		 long currentTime = System.currentTimeMillis();
+		 
+		 public void checkWin() {
+			 if (curtime >= 120) {
+	             screen = 'W';
+	         }
+		    }
 		
 		public void keyTyped(KeyEvent e) {
 			
@@ -349,6 +378,7 @@ import java.text.DecimalFormat;
 			System.out.println(key);
 			if (key==38) {
 				player2.setdy(k);
+				System.out.println(whositString);
 			}
 			if (key==68) {
 				player1.setdx(u);
@@ -421,7 +451,7 @@ import java.text.DecimalFormat;
 				 System.out.println("Space key released. Current screen: " + screen);
 			screen='G';
 			System.out.println("Screen changed to: " + screen);
-
+		
 			}
 			 
 			
