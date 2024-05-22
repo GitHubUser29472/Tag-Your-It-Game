@@ -66,10 +66,8 @@ import java.text.DecimalFormat;
 			 player2 = new Player2(1250, 100, 50, 100);
 			 YourIt = new It_indicator(50, 70, witx, wity);
 			 
-			/*
-			 p= new Players(30, 100, 50, 50, player1, Color.blue);
-			p2=new Players(1250, 100, 50, 50, player2, Color.red);
-			*/
+			  
+		
 			bi=new Background_Image();
 			music=new Player();
 			playSound=true;
