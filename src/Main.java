@@ -16,6 +16,7 @@
 			setBackground(Color.WHITE);
 			getContentPane().add(play);
 			
+			
 			setVisible(true);
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			

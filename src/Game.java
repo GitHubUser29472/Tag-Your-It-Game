@@ -57,9 +57,11 @@ import java.text.DecimalFormat;
 			back=null;
 			new Thread(this).start();
 			this.addKeyListener(this);
+			
 			key=-1;
+			
 			// background = Pictures("spacebackground2.jpg");
-			startScreenImage = new Pictures("HauntedHouseImage.png", 0, 0, 800, 600);
+			startScreenImage = new Pictures("tag your it both characters.png", 470, 150, 400, 300);
 			 player1 = new Player1(30, 100, 50, 100);
 			 player2 = new Player2(1250, 100, 50, 100);
 			 YourIt = new It_indicator(50, 70, witx, wity);
@@ -354,10 +356,10 @@ import java.text.DecimalFormat;
 		 
 		 public void drawStartScreen(Graphics g2d) {
 			 
-		    	g2d.setFont( new Font("Broadway", Font.BOLD, 20));
+		    	g2d.setFont( new Font("Calibri", Font.BOLD, 20));
 				g2d.setColor(Color.black);
-				g2d.drawString("Welcome to Tag your it!", 550, 200);
-				g2d.drawString("press space to start", 550, 300);
+				g2d.drawString("Welcome to Tag your it!", 550, 100);
+				g2d.drawString("press space to start", 550, 600);
 				
 		        g2d.drawImage(new ImageIcon(startScreenImage.getPic()).getImage(), startScreenImage.getX(), startScreenImage.getY(), startScreenImage.getWidth(), startScreenImage.getHeight(), this);
 		    }
