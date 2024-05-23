@@ -64,7 +64,7 @@ import java.text.DecimalFormat;
 			startScreenImage = new Pictures("tag your it both characters.png", 470, 150, 400, 300);
 			 player1 = new Player1(30, 100, 50, 100);
 			 player2 = new Player2(1250, 100, 50, 100);
-			 YourIt = new It_indicator(50, 70, witx, wity);
+			 YourIt = new It_indicator(witx, wity, 80, 80);
 			 
 			  
 		
@@ -252,7 +252,7 @@ import java.text.DecimalFormat;
 		    			g2d.drawString(t, 300, 300);
 		    			g2d.drawString(new DecimalFormat("#0.00").format(curtime),20,30);
 		    			
-		    			g2d.setFont( new Font("Broadway", Font.BOLD, 20));
+		    			g2d.setFont( new Font("Calibri", Font.BOLD, 20));
 						g2d.setColor(Color.black);
 		    			g2d.drawString(whositString,550,50);
 		    		
@@ -293,7 +293,7 @@ import java.text.DecimalFormat;
 						   break;
 
 		            case 'W':
-		            	g2d.setFont( new Font("Broadway", Font.BOLD, 20));
+		            	g2d.setFont( new Font("Calibri", Font.BOLD, 20));
 						g2d.setColor(Color.black);
 		            	g2d.drawString(whosnotitText + " Wins!", 550, 250);
 		            	
@@ -348,7 +348,7 @@ import java.text.DecimalFormat;
 		  public void drawPlayers(Graphics g2d) {
 		        g2d.drawImage(player1.getPic().getImage(), player1.getX(), player1.getY(), player1.getWidth(), player1.getHeight(), this);
 		        g2d.drawImage(player2.getPic().getImage(), player2.getX(), player2.getY(), player2.getWidth(), player2.getHeight(), this);
-		        g2d.drawImage(YourIt.getPic().getImage(), witx, wity+90, YourIt.getWidth(), YourIt.getHeight(), this);
+		        g2d.drawImage(YourIt.getPic().getImage(), witx-20, wity-90, YourIt.getWidth(), YourIt.getHeight(), this);
 		    }
 		 
 		 
@@ -365,7 +365,7 @@ import java.text.DecimalFormat;
 		 long currentTime = System.currentTimeMillis();
 		 
 		 public void checkWin() {
-			 if (curtime >= 120) {
+			 if (curtime >= 90) {
 	             screen = 'W';
 	         }
 		    }
@@ -464,6 +464,15 @@ import java.text.DecimalFormat;
 		
 			player1.move();
 			player2.move();
+			YourIt.move();
+			if (whosit) {
+	            witx = player1.getX();
+	            wity = player1.getY();
+	        } else {
+	            witx = player2.getX();
+	            wity = player2.getY();
+	        }
+
 		}
 		
 	
