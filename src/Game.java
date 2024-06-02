@@ -1,4 +1,4 @@
-//test
+
 import javax.swing.*;
 	import java.awt.*;
 	import java.awt.event.*;
@@ -60,7 +60,7 @@ import java.text.DecimalFormat;
 			
 			key=-1;
 			
-			// background = Pictures("spacebackground2.jpg");
+
 			startScreenImage = new Pictures("tag your it both characters.png", 470, 150, 400, 300);
 			 player1 = new Player1(30, 100, 50, 100);
 			 player2 = new Player2(1250, 100, 50, 100);
@@ -84,6 +84,7 @@ import java.text.DecimalFormat;
 		 addScore2=false;
 		 screen='S';
 		 whosit=true;
+		 playWin = false;
 		 
 		 if (curtime >= 120) {
              screen = 'W';
