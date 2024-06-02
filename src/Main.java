@@ -4,7 +4,7 @@
 	import java.awt.*;
 	import java.awt.event.*;
 
-	public class Main extends JFrame{//his
+	public class Main extends JFrame{//hi
 		private static final int WIDTH =1350;
 		private static final int HEIGHT=700;
 		
